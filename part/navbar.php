@@ -3,8 +3,8 @@ if (!isset($pageName)) $pageName = '';
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand brand-icon" href="#">HONKI</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand brand-icon" href="<?= WEB_ROOT ?>actindex.php">HONKI</a>
+    <button class=" navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
