@@ -34,7 +34,7 @@ $stmt = $pdo->query("SELECT * FROM activity");
     <div class="row">
         <div class="card_gallory d-flex flex-wrap">
             <?php while ($r = $stmt->fetch()) : ?>
-                <a href="xxx.php?sid=<?= $r['sid'] ?>" class="card_box">
+                <a href="activitypage.php?sid=<?= $r['sid'] ?>" class="card_box">
                     <div class="card_img">
                         <img src="img/<?= $r['pic'] ?>">
                     </div>
