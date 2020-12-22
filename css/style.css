@@ -1,0 +1,371 @@
+body {
+  font-family: "Noto Sans TC", sans-serif;
+  font-family: "Rubik", sans-serif;
+  font-size: 14px;
+}
+
+body p {
+  margin-bottom: 0;
+}
+
+/* navbar */
+.navbar {
+  background: #d0d9d4;
+  font-size: 16px;
+}
+
+.brand-icon {
+  font-size: 28px;
+}
+/* navbar end */
+
+/* index */
+.tags {
+  flex-wrap: wrap;
+}
+
+.tags-m {
+  margin-bottom: 32px;
+}
+
+.tags > a {
+  margin-top: 32px;
+  margin-right: 6px;
+  border-radius: 50px;
+  border: 3px solid #f0f1eb;
+  width: 100px;
+  text-align: center;
+  border-radius: 50px;
+  text-decoration: none;
+  color: #000;
+}
+
+.tags > a:hover {
+  background: #4f5250;
+  color: #fff;
+}
+
+.card_box {
+  margin-top: 32px;
+  margin-right: 16px;
+  width: 300px;
+  border: 2px solid #f0f1eb;
+  border-radius: 8px;
+}
+
+.card_gallory a {
+  text-decoration: none;
+}
+
+.card_img {
+  width: 100%;
+  height: 160px;
+  background-color: #4f5250;
+  overflow: hidden;
+  background-size: cover;
+}
+
+.card_img > img {
+  width: 100%;
+}
+
+.card_text {
+  padding: 8px;
+}
+
+.card_title {
+  color: #000000;
+  font-size: 16px;
+  line-height: 36px;
+}
+
+.card_depiction {
+  color: #4f5250;
+}
+/* index end */
+
+/* activity page */
+.carousel {
+  margin-bottom: 32px;
+}
+
+.textbox p {
+  margin-bottom: 0;
+}
+
+.act-title {
+  margin-bottom: 6px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #4f5250;
+}
+
+.act-title-box {
+  line-height: 50px;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#d8c5b6+0,e7e0d8+50,ebe7e0+100 */
+  background: #d8c5b6; /* Old browsers */
+  background: -moz-linear-gradient(
+    left,
+    #d8c5b6 0%,
+    #e7e0d8 50%,
+    #ebe7e0 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    left,
+    #d8c5b6 0%,
+    #e7e0d8 50%,
+    #ebe7e0 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to right,
+    #d8c5b6 0%,
+    #e7e0d8 50%,
+    #ebe7e0 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d8c5b6', endColorstr='#ebe7e0',GradientType=1 ); /* IE6-9 */
+}
+
+.act-about-box p {
+  margin-bottom: 0;
+}
+
+.act-about-box .act-about-title {
+  color: #4f5250;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.act-about-text {
+  padding-left: 16px;
+  font-size: 16px;
+}
+
+.sign-up {
+  display: flex;
+  justify-content: center;
+}
+
+.sign-up-m {
+  margin-bottom: 32px;
+}
+
+.sign-up-link {
+  font-size: 24px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  position: fixed;
+  right: 6px;
+  bottom: 50%;
+  flex-wrap: wrap;
+  display: block;
+  width: 70px;
+  height: 80px;
+  background: #bfb183;
+  border-radius: 10px;
+  border: 3px solid #bfb183;
+}
+
+.sign-up-link:hover {
+  border: 3px solid #f2e3b3;
+  background: #f2e3b3;
+  color: #000;
+  text-decoration: none;
+}
+
+.btt-btn {
+  position: relative;
+}
+
+.btt-link {
+  position: fixed;
+  bottom: 6px;
+  right: 6px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  border: 1px solid #9fa8a3;
+  box-shadow: 0 2px 1px #4f5250;
+}
+
+.btt-icon {
+  text-align: center;
+  font-size: 36px;
+  color: #4f5250;
+  text-decoration: none;
+}
+/* activity page end */
+
+/* login */
+.login-box {
+  border: 1px solid#f0f1eb;
+  box-shadow: 0 1px 3px #f0f1eb;
+  border-radius: 10px;
+  margin-top: 32px;
+  width: 550px;
+  height: 380px;
+  padding: 10px;
+}
+
+.login-title {
+  font-size: 24px;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.login-form {
+  text-align: center;
+}
+
+.form-group {
+  margin-top: 16px;
+  font-size: 20px;
+}
+
+.input-box {
+  width: 80%;
+  border: 2px solid #9fa8a3;
+  border-radius: 10px;
+  padding: 8px 0;
+}
+
+.btn-submit {
+  margin-top: 16px;
+  border: 2px solid #9fa8a3;
+  border-radius: 10px;
+  color: #4f5250;
+  background: #d0d9d4;
+  font-size: 20px;
+  line-height: 45px;
+}
+
+.btn-submit:hover {
+  border: 2px solid #9fa8a3;
+  color: #fff;
+  background: #9fa8a3;
+}
+
+.login-page {
+  margin: 0 auto;
+  border: 1px solid#f0f1eb;
+  box-shadow: 0 1px 3px #f0f1eb;
+  border-radius: 10px;
+  margin: 32px auto;
+  width: 330px;
+  padding: 20px;
+  text-align: center;
+}
+
+.login-page > a {
+  text-decoration: none;
+}
+/* login end */
+
+/* logout */
+.logout-btn {
+  width: 50px;
+  text-align: center;
+  margin: 0 auto;
+}
+/* logout */
+
+/* sign */
+.sign-box {
+  border: 1px solid#f0f1eb;
+  box-shadow: 0 1px 3px #f0f1eb;
+  border-radius: 10px;
+  margin-top: 32px;
+  width: 550px;
+  padding: 10px 10px 30px 10px;
+}
+
+.sign-title {
+  font-size: 24px;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.form-table {
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.m-top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 16px;
+}
+
+.inparea {
+  padding: 8px;
+  width: 100%;
+  border: 2px solid #9fa8a3;
+  border-radius: 5px;
+}
+
+.gender {
+  margin-left: 100px;
+}
+
+.sex {
+  padding-left: 5px;
+}
+
+.birth {
+  padding: 4px;
+}
+
+.livecity {
+  padding: 8px;
+}
+/* sign end */
+
+/* review */
+.formreview {
+  padding: 8px;
+  margin: 0 auto;
+  margin-top: 32px;
+  border-radius: 10px;
+  border: 1px solid #4f5250;
+  width: 100%;
+  text-align: center;
+}
+
+.success {
+  margin: 10px;
+  font-size: 100px;
+  color: #90ee90;
+}
+
+.ordernum {
+  margin-top: 16px;
+  font-size: 18px;
+}
+
+.review-title {
+  font-size: 24px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.form-table {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.review-box .form-table {
+  width: 60%;
+  border: 2px solid #f0f1eb;
+  border-collapse: separate;
+  /* border-radius: 10px; */
+}
+
+.form-table th {
+  background: #f0f1eb;
+  width: 50%;
+}
+/* review end */
