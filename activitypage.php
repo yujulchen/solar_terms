@@ -15,6 +15,9 @@ $row = $pdo
     ->fetch();
 
 
+$date = date("Y年m月d日 H點i分", strtotime($row['act_time']));
+
+
 // if (empty($row)) {
 //     header('Location: activitypage.php');
 //     exit;
@@ -28,17 +31,23 @@ $row = $pdo
 <?php include __DIR__ . '/part/navbar.php'; ?>
 
 <div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="actindex.php">活動</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><?= $row['name'] ?></li>
+        </ol>
+    </nav>
     <div class="row position-relative">
         <div class="tags tags-m d-flex mr-auto">
-            <a href="#">
+            <a href="#act-about">
                 <div>體驗介紹</div>
             </a>
-            <a href="#">
+            <a href="#cancel-or-change">
                 <div>取消與更改</div>
             </a>
         </div>
 
-        <a href="#" class="sign-up-link">
+        <a href="signup.php?sid=<?= $row['sid'] ?>" class="sign-up-link">
             <div class="sign-up sign-up-m d-flex">
                 <div>報<br>名</div>
             </div>
@@ -90,7 +99,7 @@ $row = $pdo
         </div>
     </div>
 
-    <div class="act-about-box">
+    <div id="act-about" class="act-about-box">
         <p class="act-about-title"> &diams;活動介紹</p>
         <p class="act-about-text">
             <?= $row['about_act'] ?>
@@ -99,7 +108,7 @@ $row = $pdo
     <div class="act-about-box">
         <p class="act-about-title"> &diams;活動時間</p>
         <p class="act-about-text">
-            <?= $row['act_time'] ?>
+            <?= $date ?>
         </p>
     </div>
     <div class="act-about-box">
@@ -138,7 +147,7 @@ $row = $pdo
             <?= $row['organizer'] ?>
         </p>
     </div>
-    <div class="act-about-box">
+    <div id="cancel-or-change" class="act-about-box mb-5">
         <p class="act-about-title"> &diams;取消與更改</p>
         <p class="act-about-text">
             <?= $row['cancel_or_change'] ?>

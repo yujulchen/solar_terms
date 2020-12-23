@@ -46,7 +46,7 @@ $stmt = $pdo->query("SELECT * FROM activity");
                             <p class="mt-2"> &diams;活動地點</p>
                             <p class="ml-3"><?= $r['act_location'] ?></p>
                             <p class="mt-1"> &diams;活動時間</p>
-                            <p class="ml-3"><?= $r['act_time'] ?>
+                            <p class="ml-3"><?= $date = date("Y年m月d日 H點i分", strtotime($r['act_time'])); ?>
                             </p>
                         </div>
                     </div>

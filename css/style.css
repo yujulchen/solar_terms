@@ -20,6 +20,17 @@ body p {
 /* navbar end */
 
 /* index */
+.container nav .breadcrumb {
+  margin-top: 32px;
+  margin-bottom: 0;
+  background-color: #ebe7e0;
+}
+
+.container nav .breadcrumb a {
+  color: #bfb183;
+  text-decoration: none;
+}
+
 .tags {
   flex-wrap: wrap;
 }
@@ -305,6 +316,17 @@ body p {
   width: 100%;
   border: 2px solid #9fa8a3;
   border-radius: 5px;
+}
+
+.m-top .error-msg {
+  margin-bottom: 3px;
+  border-radius: 5px;
+  background-color: #ff6140;
+}
+
+.m-top .error-msg > p {
+  padding: 6px;
+  color: #fff;
 }
 
 .gender {
