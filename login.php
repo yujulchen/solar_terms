@@ -1,16 +1,27 @@
 <?php
-if (!isset($_SESSION)) {
-    session_start();
-}
+require __DIR__ . '/db_connect.php';
+// if (!isset($_SESSION)) {
+//     session_start();
+// }
 
 $title = '登入';
+$pageName = 'login';
 
-if (isset($_POST['account']) and isset($_POST['password'])) {
-    if ($_POST['account'] === 'abc123' and $_POST['password'] === '1234') {
-        // 可以登入
-        $_SESSION['user'] = 'abc123';
-    } else {
+if (isset($_POST['email']) and isset($_POST['password'])) {
+    $sql = "SELECT * FROM `user` WHERE email=? and password=? ";
+    $stmt = $pdo->prepare($sql);
+
+    $stmt->execute([
+        $_POST['email'],
+        $_POST['password']
+    ]);
+
+    $row = $stmt->fetch();
+
+    if (empty($row)) {
         $errorMsg = '帳號或密碼錯誤';
+    } else {
+        $_SESSION['user'] = $row;
     }
 }
 ?>
@@ -27,7 +38,7 @@ if (isset($_POST['account']) and isset($_POST['password'])) {
 
     <?php if (isset($_SESSION['user'])) : ?>
         <div class="login-page">
-            <h3>Hello <?= $_SESSION['user'] ?> </h3>
+            <h3>Hello <?= $_SESSION['user']['email'] ?> </h3>
             <br>
             <a href="logout.php">
                 <div class="logout-btn btn-submit">登出</div>
@@ -42,9 +53,9 @@ if (isset($_POST['account']) and isset($_POST['password'])) {
                 <div class="login-form">
                     <form method="POST">
                         <div class="form-group">
-                            <label for="account">帳號 Account</label>
+                            <label for="email">電子信箱 Email</label>
                             <br>
-                            <input type="text" name="account" id="account" class="input-box" value="<?= htmlentities($_POST['account'] ?? '') ?>">
+                            <input type="text" name="email" id="email" class="input-box" value="<?= htmlentities($_POST['email'] ?? '') ?>">
                         </div>
                         <div class="form-group">
                             <label for="password">密碼 Password</label>

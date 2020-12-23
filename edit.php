@@ -2,15 +2,16 @@
 require __DIR__ . '/is_admin.php';
 require __DIR__ . '/db_connect.php';
 
-$pageName = 'signup';
+$pageName = 'edit';
 
-$stmt = $pdo->query("SELECT * FROM `activity`");
+$stmt = $pdo->query("SELECT * FROM `sign_up`");
 
 $sid = intval($_GET['sid']);
 
 $row = $pdo
-    ->query("SELECT * FROM `activity` WHERE sid=$sid")
+    ->query("SELECT * FROM `sign_up` WHERE sid=$sid")
     ->fetch();
+
 
 $date = date("Y年m月d日 H點i分", strtotime($row['act_time']));
 
@@ -25,11 +26,10 @@ $date = date("Y年m月d日 H點i分", strtotime($row['act_time']));
     <div class="alert alert-danger mt-5" role="alert" id="info" style="display: none;">
         錯誤
     </div>
-
     <div class="row justify-content-center">
         <div class="sign-box">
             <div class="sign-title">
-                <p>報名</p>
+                <p>編輯報名</p>
             </div>
             <div class="login-form">
                 <form name="signUpForm" method="POST" novalidate onsubmit="checkForm(); return false;">
@@ -40,7 +40,7 @@ $date = date("Y年m月d日 H點i分", strtotime($row['act_time']));
                                     <p>活動名稱</p>
                                 </th>
                                 <td class="m-top">
-                                    <p><?= $row['name'] ?></p>
+                                    <p><?= $row['act_name'] ?></p>
                                 </td>
                             </tr>
                             <tr>

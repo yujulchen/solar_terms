@@ -1,6 +1,8 @@
 <?php
 require __DIR__ . '/db_connect.php';
 
+$pageName = 'activitypage';
+
 $stmt = $pdo->query("SELECT * FROM `activity`");
 
 // if (!isset($_GET['sid'])) {

@@ -1,6 +1,8 @@
 <?php
 require __DIR__ . '/db_connect.php';
 
+$pageName = 'actindex';
+
 $stmt = $pdo->query("SELECT * FROM activity");
 
 // echo json_encode($row, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
