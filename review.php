@@ -2,15 +2,18 @@
 require __DIR__ . '/is_admin.php';
 require __DIR__ . '/db_connect.php';
 
+$pageName = 'review';
+
 if (!isset($_SESSION['user'])) {
     header('Location: login.php');
     exit;
 }
 
-
-$pageName = 'review';
-
-$stmt = $pdo->query("SELECT * FROM `sign_up`");
+$user = $_SESSION['user']['email'];
+$stmt = $pdo->query("SELECT * 
+FROM `sign_up` s
+JOIN `user` u ON s.`email` = u.`email`
+WHERE u.`email`= '$user';");
 
 $row = $stmt->fetchAll();
 
@@ -35,7 +38,7 @@ $row = $stmt->fetchAll();
 
                 <div class="review-i">
                     <div class="ordernum">
-                        <p>#訂單編號&ensp;<?= $r['order_number'] ?></p>
+                        <p>#報名單號&ensp;<?= $r['order_number'] ?></p>
                     </div>
                     <div class="review-title">
                         <p><?= $r['act_name'] ?></p>
@@ -107,10 +110,13 @@ $row = $stmt->fetchAll();
 
                 <div class="d-flex justify-content-center">
                     <div class="edit">
-                        <a href="edit.php?sid=<?= $r['sid'] ?>" class="btn btn-info mb-2">編輯</a>
+                        <a href="edit.php?order_number=<?= $r['order_number'] ?>" class="btn btn-info mb-2">編輯</a>
                     </div>
                     <div class="delete ml-2">
-                        <button type="submit" class="btn btn-danger mb-2">刪除</button>
+                        <!-- <a href="javascript:" onclick="removeItem(event)"> -->
+                        <a href="delete-api.php?order_number=<?= $r['order_number'] ?>" onclick="del_it(event, <?= $r['order_number'] ?>)">
+                            <button type="submit" class="btn btn-danger mb-2">刪除</button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -119,4 +125,12 @@ $row = $stmt->fetchAll();
 
 
     <?php include __DIR__ . '/part/scripts.php'; ?>
+    <script>
+        function del_it(event, order_number) {
+            if (!confirm(`是否要刪除編號為${order_number} 的報名？`)) {
+                event.preventDefault();
+            }
+        }
+    </script>
+
     <?php include __DIR__ . '/part/html_footer.php'; ?>

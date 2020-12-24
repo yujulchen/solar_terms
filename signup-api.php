@@ -29,9 +29,9 @@ $order_sn = date('ymd') . substr(time(), -5) . substr(microtime(), 2, 5);
 // echo $order_sn;
 
 $sql = "INSERT INTO `sign_up`(
-    `order_number`, `act_name`, `name`, `gender`, `birth`, `email`, `resident`, `times`, `created_at`
+    `order_number`, `act_name`, `name`, `gender`, `birth`, `mobile`, `email`, `resident`, `times`, `created_at`
     ) VALUES (
-        ?, ?, ?, ?, ?, ?, ?, ?, NOW()
+        ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW()
     )";
 
 $stmt = $pdo->prepare($sql);
@@ -42,6 +42,7 @@ $stmt->execute([
     $_POST['name'],
     $_POST['gender'],
     empty($_POST['birth']) ? NULL : $_POST['birth'],
+    $_POST['mobile'],
     $_SESSION['user']['email'],
     $_POST['resident'],
     $_POST['times'],

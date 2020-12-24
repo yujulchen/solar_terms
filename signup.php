@@ -60,11 +60,11 @@ $date = date("Y年m月d日 H點i分", strtotime($row['act_time']));
                                     <label for="gender">性別</label>
                                 </th>
                                 <td class="m-top">
-                                    <input type="radio" name="gender" id="gender" value="male">
+                                    <input type="radio" name="gender" id="gender" value="男性">
                                     <label for="gender" class="sex">
                                         男性
                                     </label>
-                                    <input type="radio" name="gender" id="gender" value="female" class="gender">
+                                    <input type="radio" name="gender" id="gender" value="女性" class="gender">
                                     <label for="gender" class="sex">
                                         女性
                                     </label>
@@ -107,28 +107,28 @@ $date = date("Y年m月d日 H點i分", strtotime($row['act_time']));
                                 <td class="m-top">
                                     <select name="resident" id="resident" class="livecity">
                                         <option name="resident" value="">請選擇</option>
-                                        <option name="resident" value="KEL">基隆市</option>
-                                        <option name="resident" value="TPE">台北市</option>
-                                        <option name="resident" value="NTPC">新北市</option>
-                                        <option name="resident" value="TYN">桃園市</option>
-                                        <option name="resident" value="HSC">新竹市</option>
-                                        <option name="resident" value="HSH">新竹縣</option>
-                                        <option name="resident" value="ZMI">苗栗縣</option>
-                                        <option name="resident" value="TXG">台中市</option>
-                                        <option name="resident" value="CHW">彰化縣</option>
-                                        <option name="resident" value="NTC">南投縣</option>
-                                        <option name="resident" value="YUN">雲林縣</option>
-                                        <option name="resident" value="CYI">嘉義市</option>
-                                        <option name="resident" value="CHY">嘉義縣</option>
-                                        <option name="resident" value="TNN">台南市</option>
-                                        <option name="resident" value="KHH">高雄市</option>
-                                        <option name="resident" value="PIF">屏東縣</option>
-                                        <option name="resident" value="TTT">台東縣</option>
-                                        <option name="resident" value="HUN">花蓮縣</option>
-                                        <option name="resident" value="ILA">宜蘭縣</option>
-                                        <option name="resident" value="PEH">澎湖縣</option>
-                                        <option name="resident" value="KNH">金門縣</option>
-                                        <option name="resident" value="LNN">連江縣</option>
+                                        <option name="resident" value="基隆市">基隆市</option>
+                                        <option name="resident" value="台北市">台北市</option>
+                                        <option name="resident" value="新北市">新北市</option>
+                                        <option name="resident" value="桃園市">桃園市</option>
+                                        <option name="resident" value="新竹市">新竹市</option>
+                                        <option name="resident" value="新竹縣">新竹縣</option>
+                                        <option name="resident" value="苗栗縣">苗栗縣</option>
+                                        <option name="resident" value="台中市">台中市</option>
+                                        <option name="resident" value="彰化縣">彰化縣</option>
+                                        <option name="resident" value="南投縣">南投縣</option>
+                                        <option name="resident" value="雲林縣">雲林縣</option>
+                                        <option name="resident" value="嘉義市">嘉義市</option>
+                                        <option name="resident" value="嘉義縣">嘉義縣</option>
+                                        <option name="resident" value="台南市">台南市</option>
+                                        <option name="resident" value="高雄市">高雄市</option>
+                                        <option name="resident" value="屏東縣">屏東縣</option>
+                                        <option name="resident" value="台東縣">台東縣</option>
+                                        <option name="resident" value="花蓮縣">花蓮縣</option>
+                                        <option name="resident" value="宜蘭縣">宜蘭縣</option>
+                                        <option name="resident" value="澎湖縣">澎湖縣</option>
+                                        <option name="resident" value="金門縣">金門縣</option>
+                                        <option name="resident" value="連江縣">連江縣</option>
                                     </select>
                                 </td>
                             </tr>
