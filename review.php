@@ -114,7 +114,7 @@ $row = $stmt->fetchAll();
                     </div>
                     <div class="delete ml-2">
                         <!-- <a href="javascript:" onclick="removeItem(event)"> -->
-                        <a href="delete-api.php?order_number=<?= $r['order_number'] ?>" onclick="del_it(event, <?= $r['order_number'] ?>)">
+                        <a href="javascript: del_it(<?= $r['order_number'] ?>)">
                             <button type="submit" class="btn btn-danger mb-2">刪除</button>
                         </a>
                     </div>
@@ -126,9 +126,9 @@ $row = $stmt->fetchAll();
 
     <?php include __DIR__ . '/part/scripts.php'; ?>
     <script>
-        function del_it(event, order_number) {
-            if (!confirm(`是否要刪除編號為${order_number} 的報名？`)) {
-                event.preventDefault();
+        function del_it(order_number) {
+            if (confirm(`是否要刪除編號為${order_number} 的報名？`)) {
+                location.href = 'delete-api.php?order_number=' + order_number;
             }
         }
     </script>

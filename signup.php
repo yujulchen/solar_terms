@@ -18,8 +18,6 @@ $date = date("Y年m月d日 H點i分", strtotime($row['act_time']));
 
 <?php include __DIR__ . '/part/html_header.php'; ?>
 <?php include __DIR__ . '/part/navbar.php'; ?>
-
-
 <div class="container mb-5">
 
     <div class="alert alert-danger mt-5" role="alert" id="info" style="display: none;">

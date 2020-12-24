@@ -4,16 +4,31 @@ require __DIR__ . '/db_connect.php';
 
 $pageName = 'edit';
 
+if (!isset($_GET['order_number'])) {
+    header('Location: actindex.php');
+    exit;
+}
+
 $stmt = $pdo->query("SELECT * FROM `sign_up`");
 
-$order_number = $_GET['order_number'];
+$order_number = intval($_GET['order_number']);
 
 $row = $pdo
     ->query("SELECT * FROM `sign_up` WHERE order_number=$order_number")
     ->fetch();
 
-// $date = date("Y年m月d日 H點i分", strtotime($row['act_time']));
+if (empty($row)) {
+    header('Location: actindex.php');
+    exit;
+}
 
+$date = date("Y年m月d日 H點i分", strtotime($row['times']));
+
+$gender = strval($row['gender']);
+// if ($row['gender'] == '男性') {
+//     $gender = '';
+//     echo $gender = "男性";
+// }
 ?>
 
 <?php include __DIR__ . '/part/html_header.php'; ?>
@@ -32,6 +47,8 @@ $row = $pdo
             </div>
             <div class="login-form">
                 <form name="signUpForm" method="POST" novalidate onsubmit="checkForm(); return false;">
+                    <!-- <form name="editForm" method="POST"> -->
+                    <input type="hidden" name="order_number" value="<?= $order_number ?>">
                     <table class="form-table">
                         <tbody>
                             <tr>
@@ -39,7 +56,7 @@ $row = $pdo
                                     <p>報名單號</p>
                                 </th>
                                 <td class="m-top">
-                                    <p><?= $row['order_number'] ?></p>
+                                    <p><?= htmlentities($row['order_number']) ?></p>
                                 </td>
                             </tr>
                             <tr>
@@ -47,7 +64,7 @@ $row = $pdo
                                     <p>活動名稱</p>
                                 </th>
                                 <td class="m-top">
-                                    <p><?= $row['act_name'] ?></p>
+                                    <p><?= htmlentities($row['act_name']) ?></p>
                                 </td>
                             </tr>
                             <tr>
@@ -58,8 +75,8 @@ $row = $pdo
                                     <div class="error-msg" style="display: none;">
                                         <p>請輸入正確的姓名</p>
                                     </div>
-                                    <input type="text" name="name" id="name" class="inparea" value="<?= $row['name'] ?>">
-                                    <!-- <input type="text" name="act_name" value="<?= $row['name'] ?>" hidden> -->
+                                    <input type="text" name="name" id="name" class="inparea" value="<?= htmlentities($row['name']) ?>">
+                                    <!-- <input type="text" name="act_name" value="</?= $row['name'] ?>" hidden> -->
                                 </td>
                             </tr>
                             <tr>
@@ -67,11 +84,11 @@ $row = $pdo
                                     <label for="gender">性別</label>
                                 </th>
                                 <td class="m-top">
-                                    <input type="radio" name="gender" id="gender" value="男性">
+                                    <input type="radio" name="gender" id="gender-m" value="男性" class="gender">
                                     <label for="gender" class="sex">
                                         男性
                                     </label>
-                                    <input type="radio" name="gender" id="gender" value="女性" class="gender">
+                                    <input type="radio" name="gender" id="gender-f" value="女性" class="gender">
                                     <label for="gender" class="sex">
                                         女性
                                     </label>
@@ -82,7 +99,7 @@ $row = $pdo
                                     <label for="birth">出生年月日</label>
                                 </th>
                                 <td class="m-top">
-                                    <input type="date" name="birth" id="birth" class="birth" value="<?= $row['birth'] ?>">
+                                    <input type="date" name="birth" id="birth" class="birth" value="<?= htmlentities($row['birth']) ?>">
                                 </td>
                             </tr>
                             <tr>
@@ -93,7 +110,7 @@ $row = $pdo
                                     <div class="error-msg" style="display: none;">
                                         <p>請輸入正確的手機號碼</p>
                                     </div>
-                                    <input type="text" name="mobile" id="mobile" class="inparea" value="<?= $row['mobile'] ?>">
+                                    <input type="text" name="mobile" id="mobile" class="inparea" value="<?= htmlentities($row['mobile']) ?>">
                                 </td>
                             </tr>
                             <tr>
@@ -113,7 +130,7 @@ $row = $pdo
                                 </th>
                                 <td class="m-top">
                                     <select name="resident" id="resident" class="livecity">
-                                        <option name="resident" value="<?= $row['resident'] ?>"><?= $row['resident'] ?></option>
+                                        <option name="resident" value="<?= $row['resident'] ?>"><?= htmlentities($row['resident']) ?></option>
                                         <option name="resident" value="基隆市">基隆市</option>
                                         <option name="resident" value="台北市">台北市</option>
                                         <option name="resident" value="新北市">新北市</option>
@@ -148,7 +165,7 @@ $row = $pdo
                                     <div class="error-msg" style="display: none;">
                                         <p>請選擇欲報名活動的時間</p>
                                     </div>
-                                    <input type="radio" name="times" id="times" value="<?= $row['act_time'] ?>">
+                                    <input type="radio" name="times" id="times" value="<?= htmlentities($row['times']) ?>" checked>
                                     <label for="times" class="sex">
                                         <?= $date ?>
                                     </label>
@@ -171,12 +188,17 @@ $row = $pdo
 <script>
     const info = document.querySelector('#info');
     const name = document.querySelector('#name');
+    // const gender = document.querySelector('#gender');
     const mobile = document.querySelector('#mobile');
-    // const email = document.querySelector('#email');
     const times = document.querySelector('#times');
 
     const mobile_re = /^09\d{8}$/;
-    // const email_re = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+
+    // window.onload = function() {
+    //     if (<?= $gender[0] ?> == 男性) {
+    //         document.querySelector('.gender-m').setAttribute('checked', '')
+    //     }
+    // }
 
     function checkForm() {
         let isPass = true;
@@ -185,8 +207,6 @@ $row = $pdo
         name.closest('.m-top').querySelector('.error-msg').style.display = 'none';
         mobile.style.borderColor = '#9fa8a3';
         mobile.closest('.m-top').querySelector('.error-msg').style.display = 'none';
-        // email.style.borderColor = '#9fa8a3';
-        // email.closest('.m-top').querySelector('.error-msg').style.display = 'none';
 
         if (name.value.length < 2) {
             isPass = false;
@@ -202,13 +222,6 @@ $row = $pdo
             errorMsg.style.display = 'block';
         }
 
-        // if (!email_re.test(email.value)) {
-        //     isPass = false;
-        //     email.style.borderColor = 'red';
-        //     let errorMsg = email.closest('.m-top').querySelector('.error-msg');
-        //     errorMsg.style.display = 'block';
-        // }
-
         if (!$('#times').prop('checked')) {
             isPass = false;
             let errorMsg = times.closest('.m-top').querySelector('.error-msg');
@@ -218,7 +231,7 @@ $row = $pdo
         if (isPass) {
             const fd = new FormData(document.signUpForm);
 
-            fetch('signup-api.php', {
+            fetch('edit-api.php', {
                     method: 'POST',
                     body: fd
                 })
@@ -226,15 +239,15 @@ $row = $pdo
                 .then(obj => {
                     console.log(obj);
                     if (obj.success) {
-                        // 新增成功
+                        // 修改成功
                         info.classList.remove('alert-danger');
                         info.classList.add('alert-success');
-                        info.innerHTML = "報名成功";
+                        info.innerHTML = "修改成功";
                     } else {
-                        // 新增失敗
+                        // 修改失敗
                         info.classList.remove('alert-success');
                         info.classList.add('alert-danger');
-                        info.innerHTML = "報名失敗";
+                        info.innerHTML = "修改失敗";
                     }
                     info.style.display = 'block';
                 });
