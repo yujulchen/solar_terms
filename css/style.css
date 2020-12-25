@@ -62,6 +62,11 @@ body p {
   width: 300px;
   border: 2px solid #f0f1eb;
   border-radius: 8px;
+  overflow: hidden;
+}
+
+.card_box:hover {
+  border: 2px solid #4f5250;
 }
 
 .card_gallory a {
@@ -151,7 +156,9 @@ body p {
   padding-left: 16px;
   font-size: 16px;
 }
+/* activity page end */
 
+/* sign up */
 .sign-up {
   display: flex;
   justify-content: center;
@@ -206,7 +213,7 @@ body p {
   color: #4f5250;
   text-decoration: none;
 }
-/* activity page end */
+/* sign up end */
 
 /* login */
 .login-box {

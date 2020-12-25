@@ -38,7 +38,9 @@ if (isset($_POST['email']) and isset($_POST['password'])) {
 
     <?php if (isset($_SESSION['user'])) : ?>
         <div class="login-page">
-            <h3>Hello <?= $_SESSION['user']['email'] ?> </h3>
+            <h3>Hello</h3>
+            <br>
+            <h2><?= $_SESSION['user']['nickname'] ?></h2>
             <br>
             <a href="logout.php">
                 <div class="logout-btn btn-submit">登出</div>

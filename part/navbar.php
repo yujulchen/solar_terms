@@ -27,7 +27,7 @@ if (!isset($pageName)) $pageName = '';
         <ul class="navbar-nav">
             <?php if (isset($_SESSION['user'])) : ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><?= $_SESSION['user']['email'] ?></a>
+                    <a class="nav-link" href="#"><?= $_SESSION['user']['nickname'] ?></a>
                 </li>
                 <li class="nav-item <?= $pageName == 'logout' ? 'active' : ''; ?>">
                     <a class="nav-link" href="<?= WEB_ROOT ?>logout.php">登出</a>

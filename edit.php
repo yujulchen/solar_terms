@@ -84,11 +84,11 @@ $gender = strval($row['gender']);
                                     <label for="gender">性別</label>
                                 </th>
                                 <td class="m-top">
-                                    <input type="radio" name="gender" id="gender-m" value="男性" class="gender">
+                                    <input type="radio" name="gender" id="gender" value="<?= $gender ?>" class="gender gender-m">
                                     <label for="gender" class="sex">
                                         男性
                                     </label>
-                                    <input type="radio" name="gender" id="gender-f" value="女性" class="gender">
+                                    <input type="radio" name="gender" id="gender" value="<?= $gender ?>" class="gender gender-f">
                                     <label for="gender" class="sex">
                                         女性
                                     </label>
@@ -188,17 +188,28 @@ $gender = strval($row['gender']);
 <script>
     const info = document.querySelector('#info');
     const name = document.querySelector('#name');
-    // const gender = document.querySelector('#gender');
+    const gender = document.querySelector('#gender').value;
     const mobile = document.querySelector('#mobile');
     const times = document.querySelector('#times');
 
     const mobile_re = /^09\d{8}$/;
-
-    // window.onload = function() {
-    //     if (<?= $gender[0] ?> == 男性) {
-    //         document.querySelector('.gender-m').setAttribute('checked', '')
-    //     }
-    // }
+    window.onload = function() {
+        // if (gender == '男性') {
+        //     document.querySelector('#gender').setAttribute('checked', '')
+        // } else {
+        //     document.querySelector('#gender').setAttribute('checked', '')
+        // }
+        switch (gender) {
+            case '男性':
+                document.querySelector('.gender-m').setAttribute('checked', '')
+                break;
+            case '女性':
+                document.querySelector('.gender-f').setAttribute('checked', '')
+                break;
+            default:
+                alert('沒有符合的條件');
+        }
+    }
 
     function checkForm() {
         let isPass = true;
